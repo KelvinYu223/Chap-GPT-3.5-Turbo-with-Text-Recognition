@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Ask Your Question"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyTextRecognition"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".Splash"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value=""/>
+        </activity>
+
+        <activity
+            android:name=".ChatMain"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+            android:label="Ask Your Question"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:parentActivityName=".ChatMain"
+            android:label="Recognize Text"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"/>
+
+        <activity android:name=".About"
+            android:parentActivityName=".ChatMain"
+            android:label="About"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"/>
+
+        <activity android:name=".Instruction"
+            android:parentActivityName=".ChatMain"
+            android:label="Instruction"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"/>
+
+        <receiver android:name=".Text_Detect_Widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/text_detect_widget_info" />
+        </receiver>
+    </application>
+
+</manifest>
